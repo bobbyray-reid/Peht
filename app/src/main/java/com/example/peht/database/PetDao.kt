@@ -1,15 +1,15 @@
 package com.example.peht.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface PetDao {
 
     @Insert
     fun addPet(dog : Pet) : Long
+
+    @Update
+    fun updatePet(pet : Pet)
 
     @Delete
     fun deletePet(dog : Pet)

@@ -159,14 +159,14 @@
 
     <Button
         android:id="@+id/edit_button"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="26dp"
         android:backgroundTint="#2a9d8f"
         android:fontFamily="@font/peralta"
-        android:text="Edit"
+        android:text="Save changes"
         android:textColor="#f4a261"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/event_button"
@@ -175,7 +175,7 @@
 
     <Button
         android:id="@+id/event_button"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="60dp"
