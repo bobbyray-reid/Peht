@@ -14,8 +14,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.peht.database.AppDatabase
 import com.example.peht.database.Pet
 import com.example.peht.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
@@ -25,6 +30,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: MyAdapter
     private val pets = mutableListOf<Pet>()
+
+    override fun onResume() {
+
+        super.onResume()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +57,9 @@ class MainActivity : AppCompatActivity() {
             startForAddResult.launch(intent)
         }
 
-//        loadAllDogs()
+
+        loadAllPets()
+
 
     }
 
@@ -55,12 +67,30 @@ class MainActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result : ActivityResult ->
             if(result.resultCode == Activity.RESULT_OK){
-                loadAllDogs()
+                loadAllPets()
             }
         }
 
-    private fun loadAllDogs() {
-        TODO("Not yet implemented")
+    private fun loadAllPets() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val db = AppDatabase.getDatabase(applicationContext)
+            val dao = db.petDao()
+            val results = dao.getAllPets()
+
+            withContext(Dispatchers.Main){
+                pets.clear()
+                pets.addAll(results)
+                adapter.notifyDataSetChanged()
+
+                var msg = ""
+                if(pets.size < 0){
+                    msg = "Enter a pet to begin"
+                }else{
+                    msg = "Your ${pets.size} pet(s) are listed below"
+                }
+                binding.dogMessageTextView.setText(msg)
+            }
+        }
     }
 
     inner class MyViewHolder(val view: TextView) :
@@ -87,24 +117,24 @@ class MainActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
             val pet = pets[position]
-            val birthDate = pet.birthDate
-            val today : Date  = Date()
-
-            val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-            parser.timeZone = TimeZone.getTimeZone("UTC")
-            val dateInDatabase : Date = parser.parse(birthDate)
-            val diff : Long = today.time - dateInDatabase.time
-            val sec = diff.toDouble()/1000
-            val min = sec / 60
-            val hours = min / 60
-            val day = hours / 24
-            val year = day / 365
-            val age = Math.floor(year)
-            val displayFormat = SimpleDateFormat("MM/dd/yyyy")
-            val displayDate : String = displayFormat.format(dateInDatabase)
+//            val birthDate = pet.birthDate
+//            val today : Date  = Date()
+//
+//            val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+//            parser.timeZone = TimeZone.getTimeZone("UTC")
+//            val dateInDatabase : Date = parser.parse(birthDate)
+//            val diff : Long = today.time - dateInDatabase.time
+//            val sec = diff.toDouble()/1000
+//            val min = sec / 60
+//            val hours = min / 60
+//            val day = hours / 24
+//            val year = day / 365
+//            val age = Math.floor(year)
+//            val displayFormat = SimpleDateFormat("MM/dd/yyyy")
+//            val displayDate : String = displayFormat.format(dateInDatabase)
 
             holder.view.setText(
-                "${pet.name} ${age}"
+                "${pet.name} ${pet.birthDate.padStart(12)}"
             )
         }
 

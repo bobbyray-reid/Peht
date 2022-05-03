@@ -9,14 +9,14 @@ import androidx.room.Query
 interface PetDao {
 
     @Insert
-    fun addDog(dog : Pet) : Long
+    fun addPet(dog : Pet) : Long
 
     @Delete
-    fun deleteDog(dog : Pet)
+    fun deletePet(dog : Pet)
 
     @Query("SELECT * FROM pet")
-    fun getAllDogs() : List<Pet>
+    fun getAllPets() : List<Pet>
 
     @Query("SELECT * FROM pet WHERE id = :dogId")
-    fun getDog(dogId : Long) : Pet
+    fun getPet(dogId : Long) : Pet
 }

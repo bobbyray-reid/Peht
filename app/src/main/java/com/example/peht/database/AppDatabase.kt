@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [Pet::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun noteDao(): PetDao
+    abstract fun petDao(): PetDao
 
     companion object {
         private val NAME_OF_DATABASE = "dogs"

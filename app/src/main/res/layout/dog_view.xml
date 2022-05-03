@@ -3,11 +3,15 @@
     android:id="@+id/dog_textView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:background="#2a9d8f"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="4dp"
+    android:background="#e76f51"
+    android:fontFamily="@font/peralta"
     android:padding="8dp"
     android:text="text"
-    android:textColor="#f8f8ff"
+    android:textColor="#264653"
     android:textSize="30sp">
 
 </TextView>

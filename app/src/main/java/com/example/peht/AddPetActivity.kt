@@ -2,6 +2,7 @@ package com.example.peht
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +10,14 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.DatePicker
+import android.widget.Toast
+import com.example.peht.database.AppDatabase
+import com.example.peht.database.Pet
 import com.example.peht.databinding.ActivityAddPetBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.Period
@@ -38,26 +46,7 @@ class AddPetActivity : AppCompatActivity() {
         dateButton.setText(getTodaysDate())
         dateButton.setOnClickListener {
             datePickerDialog.show()
-            Log.i("status", "updated date is ${dateButton.text}")
         }
-
-        Log.i("Status", "date is ${dateButton.text}")
-
-        val test = binding.button2.setOnClickListener {
-            val name = binding.fullNameEditText.text
-            val breed = binding.breedAutoCompleteTextView.text
-            val bday = binding.datePickerButton.text
-            val m = binding.maleButton
-            val f = binding.femaleButton
-            var gender = ""
-            if(m.isChecked){
-                gender = "Male"
-            }else if(f.isChecked){
-                gender = "Female"
-            }
-        }
-
-
     }
 
 
@@ -119,6 +108,60 @@ class AddPetActivity : AppCompatActivity() {
             return "DEC";
 
         return "JAN";
+    }
+
+    override fun onBackPressed() {
+        val name = binding.fullNameEditText.text.toString().trim()
+        if(name.isEmpty()){
+            Toast.makeText(applicationContext,
+            "Name cannot be empty.", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        val breed = binding.breedAutoCompleteTextView.text.toString()
+        if(breed.isEmpty()){
+            Toast.makeText(applicationContext,
+                "A breed must be selected.", Toast.LENGTH_LONG).show()
+            return
+        }
+        var gender = ""
+        val male = binding.maleButton
+        val female = binding.femaleButton
+        if(male.isChecked){
+            gender = "Male"
+        }else if(female.isChecked){
+            gender = "Female"
+        }else{
+            Toast.makeText(applicationContext,
+                "A gender must be selected.", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        val bday = binding.datePickerButton.text.toString()
+        if(bday.isEmpty()){
+            Toast.makeText(applicationContext,
+                "You must enter a Date of Birth.", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val petDao = AppDatabase.getDatabase(applicationContext).petDao()
+            var petId : Long
+
+            val pet = Pet(0, name, breed, gender, bday)
+            petId = petDao.addPet(pet)
+
+            val intent = Intent()
+            intent.putExtra(
+                "pet id",
+                petId
+            )
+            withContext(Dispatchers.Main){
+                setResult(RESULT_OK,intent)
+                super.onBackPressed()
+            }
+        }
+
     }
 
 }

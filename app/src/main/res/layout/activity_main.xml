@@ -11,6 +11,7 @@
         android:layout_width="412dp"
         android:layout_height="391dp"
         android:background="#f4a261"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -20,8 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/peralta"
+        android:gravity="center"
         android:text="TextView"
-        android:textSize="20sp"
+        android:textColor="#264653"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
