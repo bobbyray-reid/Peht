@@ -70,6 +70,14 @@ class MainActivity : AppCompatActivity() {
                 loadAllPets()
             }
         }
+    private val startForProfileResults =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result : ActivityResult ->
+
+            if(result.resultCode == Activity.RESULT_OK){
+                loadAllPets()
+            }
+        }
 
     private fun loadAllPets() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -102,7 +110,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onClick(v: View?) {
-            TODO("Not yet implemented")
+            val intent = Intent(applicationContext, ProfileActivity::class.java)
+
+            val pet = pets[adapterPosition]
+            intent.putExtra(
+                getString(R.string.intent_key_pet_id),
+                pet.id
+            )
+            startForProfileResults.launch(intent)
         }
 
     }
