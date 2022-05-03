@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Peht" >
         <activity
             android:name=".AddPetActivity"
+            android:label="Add Pet"
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
@@ -26,6 +27,10 @@
             android:name=".MainActivity"
             android:exported="true" >
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
