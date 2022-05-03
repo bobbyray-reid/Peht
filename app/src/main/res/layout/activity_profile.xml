@@ -4,6 +4,199 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    android:background="#e9c46a"
+    tools:context=".AddPetActivity">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#e76f51"
+        android:fontFamily="@font/peralta"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Pet Profile"
+        android:textColor="#264653"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="258dp"
+        android:fontFamily="@font/peralta"
+        android:text="Full Name"
+        android:textColor="#264653"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <EditText
+        android:id="@+id/fullName_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="#f4a261"
+        android:ems="10"
+        android:fontFamily="@font/peralta"
+        android:gravity="center"
+        android:inputType="none"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#264653"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14"
+        tools:ignore="Deprecated" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="314dp"
+        android:fontFamily="@font/peralta"
+        android:text="Breed"
+        android:textColor="#264653"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullName_editText" />
+
+    <EditText
+        android:id="@+id/breed_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="#f4a261"
+        android:ems="10"
+        android:fontFamily="@font/peralta"
+        android:gravity="center"
+        android:inputType="none"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#264653"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="297dp"
+        android:fontFamily="@font/peralta"
+        android:text="Gender"
+        android:textColor="#264653"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breed_editText" />
+
+    <EditText
+        android:id="@+id/gender_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="#f4a261"
+        android:ems="10"
+        android:fontFamily="@font/peralta"
+        android:gravity="center"
+        android:inputType="none"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#264653"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="221dp"
+        android:fontFamily="@font/peralta"
+        android:text="Date of Birth"
+        android:textColor="#264653"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender_editText" />
+
+    <Button
+        android:id="@+id/birthDatePickerButton"
+        style="?android:spinnerStyle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="JAN 01 2020"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        />
+
+    <Button
+        android:id="@+id/edit_button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="26dp"
+        android:backgroundTint="#2a9d8f"
+        android:fontFamily="@font/peralta"
+        android:text="Edit"
+        android:textColor="#f4a261"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/event_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birthDatePickerButton" />
+
+    <Button
+        android:id="@+id/event_button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="60dp"
+        android:backgroundTint="#2a9d8f"
+        android:fontFamily="@font/peralta"
+        android:text="Add Event"
+        android:textColor="#f4a261"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_button"
+        app:layout_constraintTop_toBottomOf="@+id/birthDatePickerButton" />
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

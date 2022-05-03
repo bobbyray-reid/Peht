@@ -7,6 +7,7 @@ import com.example.peht.databinding.ActivityProfileBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding : ActivityProfileBinding
@@ -28,6 +29,12 @@ class ProfileActivity : AppCompatActivity() {
                 .petDao()
                 .getPet(petId)
 
+            withContext(Dispatchers.Main){
+                binding.fullNameEditText.setText(pet.name)
+                binding.breedEditText.setText(pet.breed)
+                binding.genderEditText.setText(pet.gender)
+                binding.birthDatePickerButton.setText(pet.birthDate)
+            }
 
         }
 

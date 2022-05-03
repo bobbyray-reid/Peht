@@ -5,11 +5,8 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.DatePicker
 import android.widget.Toast
 import com.example.peht.database.AppDatabase
 import com.example.peht.database.Pet
@@ -18,9 +15,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.Period
 import java.util.*
 
 class AddPetActivity : AppCompatActivity() {
@@ -42,7 +36,7 @@ class AddPetActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initDatePicker()
-        dateButton = findViewById(R.id.datePickerButton) as Button
+        dateButton = findViewById(R.id.birthDatePickerButton) as Button
         dateButton.setText(getTodaysDate())
         dateButton.setOnClickListener {
             datePickerDialog.show()
