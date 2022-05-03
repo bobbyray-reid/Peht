@@ -181,7 +181,7 @@
         android:layout_marginEnd="60dp"
         android:backgroundTint="#2a9d8f"
         android:fontFamily="@font/peralta"
-        android:text="Add Event"
+        android:text="See Events"
         android:textColor="#f4a261"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"

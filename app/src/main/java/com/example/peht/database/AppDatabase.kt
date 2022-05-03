@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Pet::class], version = 1)
+@Database(entities = [Pet::class, Event::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun petDao(): PetDao
+    abstract fun eventDao() : EventDao
 
     companion object {
         private val NAME_OF_DATABASE = "dogs"

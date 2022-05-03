@@ -36,7 +36,7 @@ class AddPetActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initDatePicker()
-        dateButton = findViewById(R.id.birthDatePickerButton) as Button
+         dateButton = findViewById(R.id.datePickerButton) as Button
         dateButton.setText(getTodaysDate())
         dateButton.setOnClickListener {
             datePickerDialog.show()
