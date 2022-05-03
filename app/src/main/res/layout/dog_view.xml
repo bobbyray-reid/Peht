@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dog_textView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="#2a9d8f"
+    android:padding="8dp"
+    android:text="text"
+    android:textColor="#f8f8ff"
+    android:textSize="30sp">
+
+</TextView>
