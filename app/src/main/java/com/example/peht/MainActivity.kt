@@ -117,21 +117,6 @@ class MainActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
             val pet = pets[position]
-//            val birthDate = pet.birthDate
-//            val today : Date  = Date()
-//
-//            val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-//            parser.timeZone = TimeZone.getTimeZone("UTC")
-//            val dateInDatabase : Date = parser.parse(birthDate)
-//            val diff : Long = today.time - dateInDatabase.time
-//            val sec = diff.toDouble()/1000
-//            val min = sec / 60
-//            val hours = min / 60
-//            val day = hours / 24
-//            val year = day / 365
-//            val age = Math.floor(year)
-//            val displayFormat = SimpleDateFormat("MM/dd/yyyy")
-//            val displayDate : String = displayFormat.format(dateInDatabase)
 
             holder.view.setText(
                 "${pet.name} ${pet.birthDate.padStart(12)}"
